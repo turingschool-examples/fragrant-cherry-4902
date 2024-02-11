@@ -7,5 +7,7 @@ class Project < ApplicationRecord
     Challenge.find(self.challenge_id).theme
   end
 
-  
+  def contestant_count
+    Contestant.joins(:projects).where("projects.id = #{self.id}").count
+  end
 end

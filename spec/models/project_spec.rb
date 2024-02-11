@@ -18,9 +18,7 @@ RSpec.describe Project, type: :model do
         expect(news_chic.project_challenge_theme).to eq(recycled_material_challenge.theme)
       end
     end
-  end
-  
-  describe "Class Methods" do
+
     describe "#contestant_count" do
       it 'returns the number of contestants on a project' do
         jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
