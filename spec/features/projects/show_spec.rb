@@ -37,8 +37,15 @@ RSpec.describe '#Projects Show Page', type: :feature do
   #User Story 3
   it "displays number of contestants on this project" do
     visit "/projects/#{@news_chic.id}"
-save_and_open_page
+
     expect(page).to have_content("Number of Contestants: 2")
+  end
+
+  #User Story Extension 1 - Average years of experience for contestants by project
+  it "displays number of contestants on this project" do
+    visit "/projects/#{@boardfit.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 11.5 years")
   end
  end
 end
