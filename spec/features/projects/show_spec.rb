@@ -38,11 +38,11 @@ RSpec.describe 'Projects Show Page' do
     ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
     
 
-    visit "/projects/#{news_chic}"
+    visit "/projects/#{news_chic.id}"
 
     expect(page).to have_content("Number of Contestants: 2")
     
-    visit "/projects/#{upholstery_tux}"
+    visit "/projects/#{upholstery_tux.id}"
 
     expect(page).to have_content("Number of Contestants: 1")
   end
