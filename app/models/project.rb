@@ -6,4 +6,6 @@ class Project < ApplicationRecord
   def project_challenge_theme
     Challenge.find(self.challenge_id).theme
   end
+
+  
 end
