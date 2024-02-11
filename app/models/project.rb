@@ -10,4 +10,8 @@ class Project < ApplicationRecord
   def contestant_count
     Contestant.joins(:projects).where("projects.id = #{self.id}").count
   end
+
+  def average_contestant_experience
+    Contestant.joins(:projects).where("projects.id = #{self.id}").average("contestants.years_of_experience").round(1)
+  end
 end

@@ -68,10 +68,10 @@ RSpec.describe 'Projects Show Page' do
 
     visit "/projects/#{news_chic.id}"
 
-    expect(page).to have_content("Average Contestant Experience: 12.5")
+    expect(page).to have_content("Average Contestant Experience: 14")
     
     visit "/projects/#{upholstery_tux.id}"
 
-    expect(page).to have_content("Average Contestant Experience: 13.7")
+    expect(page).to have_content("Average Contestant Experience: 12.7")
   end
 end

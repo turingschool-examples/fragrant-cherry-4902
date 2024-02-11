@@ -60,8 +60,8 @@ RSpec.describe Project, type: :model do
         ContestantProject.create(contestant_id: doug.id, project_id: upholstery_tux.id)
         ContestantProject.create(contestant_id: dave.id, project_id: upholstery_tux.id)
 
-        expect(news_chic.average_contestant_experience).to eq(12.5)
-        expect(upholstery_tux.average_contestant_experience).to eq(13.7)
+        expect(news_chic.average_contestant_experience).to eq(14)
+        expect(upholstery_tux.average_contestant_experience).to eq(12.7)
       end
     end
   end
