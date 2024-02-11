@@ -75,4 +75,3 @@ RSpec.describe 'Projects Show Page' do
     expect(page).to have_content("Average Contestant Experience: 13.7")
   end
 end
-end
