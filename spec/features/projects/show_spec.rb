@@ -53,4 +53,14 @@ RSpec.describe 'Projects Show Page' do
 
     expect(page).to have_content("Average Contestant Experience: 12.7")
   end
+
+  it 'can add a contestant to a project from the show page and increase the total number of contestants on the project' do
+     visit "/projects/#{@upholstery_tux.id}"
+
+     expect(page).to have_field("add_contestant_by_id")
+
+     fill_in "add_contestant_by_id", with: "#{@jay.id}"
+
+     expect(page).to have_content("Number of Contestants: 4")
+  end
 end
