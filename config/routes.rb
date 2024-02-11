@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
 get "/projects/:id", to: "projects#show"
+post "/projects/:id", to: "contestant_projects#new"
 get "/contestants", to: "contestants#index"
 end
