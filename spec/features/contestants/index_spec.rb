@@ -5,9 +5,9 @@ RSpec.describe "Contestant Index Page", type: :feature do
     let!(:challenge_1) {Challenge.create!(theme: "Apartment Furnishings", project_budget: 550)}
     let!(:challenge_2) {Challenge.create!(theme: "Toys", project_budget: 650)}
 
-    let!(:project_1) {challenge_1.create!(name: "Litfit", material: "Lamp Shade")}
-    let!(:project_2) {challenge_1.create!(name: "Projection", material: "Lights")}
-    let!(:project_3) {challenge_2.create!(name: "Playhouse", material: "Legos")}
+    let!(:project_1) {challenge_1.projects.create!(name: "Litfit", material: "Lamp Shade")}
+    let!(:project_2) {challenge_1.projects.create!(name: "Projection", material: "Lights")}
+    let!(:project_3) {challenge_2.projects.create!(name: "Playhouse", material: "Legos")}
 
     let!(:contestant_1) {Contestant.create!(name: "Amanda", age: 32, hometown: "Indianapolis", years_of_experience: 5)}
     let!(:contestant_2) {Contestant.create!(name: "Alice", age: 54, hometown: "Louisville", years_of_experience: 15)}
