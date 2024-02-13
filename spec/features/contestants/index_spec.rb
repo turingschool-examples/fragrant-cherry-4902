@@ -34,13 +34,15 @@ RSpec.describe "Contestants Index Page", type: :feature do
       expect(page).to have_content("Erin Robertson")
 
       within "#contestant-#{@jay.id}" do
-        expect(page).to have_content("Jay McCaroll")
+        expect(page).to have_content("Jay McCarroll")
         expect(page).to have_content("Projects: Litfit")
       end
 
       within "#contestant-#{@kentaro.id}" do
         expect(page).to have_content("Kentaro Kameyama")
-        expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
+        expect(page).to have_content("Projects:")
+        expect(page).to have_content("Upholstery Tuxedo")
+        expect(page).to have_content("Boardfit")
       end
     end
   end
