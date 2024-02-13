@@ -29,6 +29,9 @@ RSpec.describe 'Contestants Index Page' do
 
         expect(page).to have_content("Jay McCarroll")
         expect(page).to have_content("Gretchen Jones")
+        expect(page).to have_content("Upholstery Tuxedo")
+        expect(page).to have_content("Boardfit")
+        expect(page).to_not have_content("Litfit") # not associated with any contestant
     end
 end
 
