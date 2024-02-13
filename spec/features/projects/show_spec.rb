@@ -39,7 +39,7 @@ RSpec.describe "Projects Show Page", type: :feature do
     end
   end
 
-  describe "Extension 1 - Average Years of Experience for Contestants by Project" do
+  describe "User Story Extension 1 - Average years of experience for contestants by project" do
     it "displays the average years of experience of Contestants" do
       expect(page).to have_content("Average Contestant Experience: 12.5 years")
     end
@@ -47,6 +47,7 @@ RSpec.describe "Projects Show Page", type: :feature do
 
   describe "User Story Extension 2 - Adding a contestant to a project" do
     it "has a form to add a contestant to this project" do
+      expect(page).to have_content("Number of Contestants: 2")
       expect(page).to have_field(:contestant_id)
       expect(page).to have_button("Add Contestant to Project")
 
