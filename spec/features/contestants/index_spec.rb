@@ -23,7 +23,6 @@ RSpec.describe "Contestants Index Page", type: :feature do
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @boardfit.id)
 
-    @contestants = Contestant.all
     visit contestants_path
   end
 
