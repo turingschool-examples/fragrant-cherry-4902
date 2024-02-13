@@ -1,13 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
-
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
-  end
-
+RSpec.describe "Projects Show Page", type: :feature do
   before do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -22,27 +15,51 @@ RSpec.describe Project, type: :model do
     @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
-    ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
-    ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+    ContestantProject.create(contestant_id: @jay.id, project_id: @lit_fit.id)
+    ContestantProject.create(contestant_id: @gretchen.id, project_id: @lit_fit.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @boardfit.id)
+
+    visit show_projects_path(@lit_fit)
+  end
+  describe "User Story 1" do
+    it "displays the project name and material, along with the theme" do
+      expect(page).to have_content("Project Name: Litfit")
+      expect(page).to have_content("Material: Lamp Shade")
+      expect(page).to have_content("Challenge Theme: Apartment Furnishings")
+    end
   end
 
-  describe "instance methods" do
-    describe "#number_of_contestants" do
-      it "returns the number of contestants for a Project" do
-        expect(@news_chic.number_of_contestants).to eq(2)
-        expect(@boardfit.number_of_contestants).to eq(3)
-      end
+  describe "User Story 3" do
+    it "displays the count of number of contestants" do
+      expect(page).to have_content("Number of Contestants: 2")
     end
+  end
 
-    describe "#avg_experience" do
-      it "returns the average experience of Contestants" do
-        expect(@news_chic.avg_experience).to eq(12.5)
-        expect(@news_chic.avg_experience).to eq(12.5)
+  describe "User Story Extension 1 - Average years of experience for contestants by project" do
+    it "displays the average years of experience of Contestants" do
+      expect(page).to have_content("Average Contestant Experience: 12.5 years")
+    end
+  end
+
+  describe "User Story Extension 2 - Adding a contestant to a project" do
+    it "has a form to add a contestant to this project" do
+      expect(page).to have_content("Number of Contestants: 2")
+      expect(page).to have_field(:contestant_id)
+      expect(page).to have_button("Add Contestant to Project")
+
+      fill_in(:contestant_id, with:@erin.id)
+      click_button
+
+      expect(page).to have_content("Number of Contestants: 3")
+
+      visit contestants_path
+
+      within "#contestant-#{@erin.id}" do
+        expect(page).to have_content("Litfit")
       end
     end
   end

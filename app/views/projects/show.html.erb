@@ -1,0 +1,14 @@
+<h1>Project Name: <%= @project.name %></h1>
+<h3>Material: <%= @project.material %></h3>
+<h3>Challenge Theme: <%= @project.challenge.theme %></h3>
+<h3>Number of Contestants: <%= @project.number_of_contestants %></h3>
+<h3>Average Contestant Experience: <%= @project.avg_experience %> years</h3>
+
+<div id="add-contestant">
+  <%= form_with url: create_contestant_projects_path, method: :post,  data: { turbo: false } do |f| %> 
+    <%= f.label :contestant_id, "ID of Contestant" %>
+    <%= f.number_field :contestant_id %>
+    <%= hidden_field_tag :project_id, @project.id %>
+    <%= f.submit "Add Contestant to Project" %>
+  <% end %>
+</div>

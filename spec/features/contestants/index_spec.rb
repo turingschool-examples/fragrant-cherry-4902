@@ -1,13 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
-
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
-  end
-
+RSpec.describe "Contestants Index Page", type: :feature do
   before do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -22,27 +15,33 @@ RSpec.describe Project, type: :model do
     @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
-    ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
-    ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+    ContestantProject.create(contestant_id: @jay.id, project_id: @lit_fit.id)
+    ContestantProject.create(contestant_id: @gretchen.id, project_id: @lit_fit.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @boardfit.id)
+
+    visit contestants_path
   end
 
-  describe "instance methods" do
-    describe "#number_of_contestants" do
-      it "returns the number of contestants for a Project" do
-        expect(@news_chic.number_of_contestants).to eq(2)
-        expect(@boardfit.number_of_contestants).to eq(3)
-      end
-    end
+  describe "User Story 2" do
+    it "lists the names of all contestants and projects they've been on" do
+      expect(page).to have_content("All Contestants:")
+      expect(page).to have_content("Gretchen Jones")
+      expect(page).to have_content("Erin Robertson")
 
-    describe "#avg_experience" do
-      it "returns the average experience of Contestants" do
-        expect(@news_chic.avg_experience).to eq(12.5)
-        expect(@news_chic.avg_experience).to eq(12.5)
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Jay McCarroll")
+        expect(page).to have_content("Projects: Litfit")
+      end
+
+      within "#contestant-#{@kentaro.id}" do
+        expect(page).to have_content("Kentaro Kameyama")
+        expect(page).to have_content("Projects:")
+        expect(page).to have_content("Upholstery Tuxedo")
+        expect(page).to have_content("Boardfit")
       end
     end
   end
