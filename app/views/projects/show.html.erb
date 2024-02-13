@@ -1,3 +1,8 @@
 <h1><%=@project.name%></h1>
 <p><%=@project.material%></p>
 <p><%=@project.challenge.theme%></p>
+<p>Contestants on this project: <%=@project.contestants.contestant_count%></p>
+
+<p>Average Contestant Exp: <%=binding.pry%>years</p>
+<p>Average Contestant Exp: <%=@project.contestants.average_exp%>years</p>
+
