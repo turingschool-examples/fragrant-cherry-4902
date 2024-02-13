@@ -30,7 +30,7 @@ RSpec.describe 'Project Show Page' do
 
         visit "/projects/#{news_chic.id}"
         
-        expect(page).to have_content(2)
+        expect(page).to have_content(2) # number of contestants associated with news_chic
     end
 end 
 

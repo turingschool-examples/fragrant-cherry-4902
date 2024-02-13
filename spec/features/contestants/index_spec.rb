@@ -25,7 +25,6 @@ RSpec.describe 'Contestants Index Page' do
         ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
 
         visit "/contestants"
-        save_and_open_page
 
         expect(page).to have_content("Jay McCarroll")
         expect(page).to have_content("Gretchen Jones")
