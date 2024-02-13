@@ -29,16 +29,16 @@ RSpec.describe "Contestant Index Page", type: :feature do
     end
 
     it "lists contestant's projects" do
-      within "#contestant_#{contestant_1.id}" do
+      within "#contestant_projects-#{contestant_1.id}" do
         expect(page).to have_content(project_1.name)
       end
       
-      within "#contestant_#{contestant_2.id}" do
+      within "#contestant_projects-#{contestant_2.id}" do
         expect(page).to have_content(project_1.name)
         expect(page).to have_content(project_2.name)
       end
 
-      within "#contestant_#{contestant_3.id}" do
+      within "#contestant_projects-#{contestant_3.id}" do
         expect(page).to have_content(project_3.name)
       end
     end
