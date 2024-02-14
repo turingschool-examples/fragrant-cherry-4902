@@ -2,7 +2,14 @@
 <p><%=@project.material%></p>
 <p><%=@project.challenge.theme%></p>
 <p>Contestants on this project: <%=@project.contestants.contestant_count%></p>
+<p>Average Contestant Exp: <%=@project.contestants.average_exp.to_i %> years</p>
 
-<p>Average Contestant Exp: <%=binding.pry%>years</p>
-<p>Average Contestant Exp: <%=@project.contestants.average_exp%>years</p>
+<h3> Add a Contestant </h3>
 
+<%= form_with url: "/contestant_projects?project_id=#{@project.id}", method: :patch, data: {turbo: false}, local: true do |f| %>
+  
+  <%= f.label :id %>
+  <%= f.number_field :contestant_id %>
+
+  <%= f.submit "Add Contestant to Project"%>
+<% end %>
