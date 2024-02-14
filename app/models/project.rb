@@ -5,6 +5,5 @@ class Project < ApplicationRecord
 
   def self.count_projects
     Project.count
-  end
-  
+  end  
 end
