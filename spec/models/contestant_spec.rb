@@ -6,4 +6,5 @@ RSpec.describe Contestant, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:projects).through(:contestant_projects)}
   end
+
 end
