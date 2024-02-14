@@ -1,0 +1,14 @@
+<h1>Project</h1>
+<ul>
+    <li>Project's Name: <%= @project.name %></li>
+    <li>Project's Material: <%= @project.material %></li>
+    <li>Challenge Theme: <%= @project.challenge.theme %>
+    <li>Number of Contestants: <%= @project.contestant_count %></li>
+    <li>Average Years of Contestants' Experience: <%= @project.average_contestants_experience.round(2)%> years</li>
+</ul>
+
+<%= form_with url: "/projects/#{@project.id}/contestant_projects/", data: {turbo: false} do |form| %>
+    <%= form.label :contestant_id, "Contestant ID:" %>
+    <%= form.text_field :contestant_id %>
+    <%= form.submit "Add Contestant to Project" %>
+<% end %>
