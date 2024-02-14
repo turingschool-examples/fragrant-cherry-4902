@@ -1,0 +1,53 @@
+commit 6b383972a3270a746ab9ebaccecffc0d893937d0
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 16:49:42 2024 -0700
+
+    feat: Complete the IC
+
+commit ab167afcb1b78b2639cc3e2e4886b0fb293c262e
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 16:42:43 2024 -0700
+
+    feat: Complete both extensions
+
+commit 35377af9717a070d004e25ae10d0b5368dcbfe34
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 16:13:02 2024 -0700
+
+    feat: Complete US-2
+
+commit d78ff35427dea366e06f21f64cda896ffda81ed9
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 15:55:44 2024 -0700
+
+    test: Write feature test for US-2
+
+commit 893bd004ce612edeb1545202402cd680215d21e5
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 15:48:39 2024 -0700
+
+    feat: Complete US 1 and 3
+
+commit d70797972255b1967d3fc4ef17cd5b8f70b613f4
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 15:28:06 2024 -0700
+
+    feat: Make Spec tests pass
+
+commit 5df442f42d3ff1f496d10a5ff749c5493b3ee5e2
+Author: Yain Porter <144638203+yainporter@users.noreply.github.com>
+Date:   Tue Feb 13 15:21:06 2024 -0700
+
+    Start IC
+
+commit 80a4e8b33f4a2b68520a6c1d9f0b5013a6cc91ac
+Author: Juliet Eyraud <juliet@turing.edu>
+Date:   Wed Feb 7 15:54:36 2024 -0600
+
+    Remove validations and bump Rails version
+
+commit 03221088229af79774f066068885c11fa8bcff09
+Author: Chris Simmons <chris@turing.edu>
+Date:   Thu Jul 13 15:24:06 2023 -0400
+
+    Initial commit
