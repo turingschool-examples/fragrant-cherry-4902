@@ -17,7 +17,7 @@ RSpec.describe "Project show page" do
         expect(page).to have_content(project_1.material)
         expect(page).to have_content(challenge_1.theme)
 
-        
+        # save_and_open_page
 
 
       end
