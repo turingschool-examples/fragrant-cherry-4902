@@ -1,13 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
-
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
-  end
-
+RSpec.describe "Contestant's Index Page", type: :feature do
   before :each do
 
     @challenge_1 = Challenge.create!(theme: "Recycled Material", project_budget: 1000)
@@ -30,11 +23,34 @@ RSpec.describe Project, type: :model do
 
   end
 
-  describe "instance methods" do
-    it "counts the number of contestants working on each respective project" do
-      expect(@project_1.project_contestant_count).to eq(3)
-      expect(@project_2.project_contestant_count).to eq(2)
-      expect(@project_3.project_contestant_count).to eq(2)
+  it "should display a list of names of all the contestants trying to Make it Work!" do
+    visit "/contestants"
+
+    expect(page).to have_content("Make it Work! Contestant List:")
+    expect(page).to have_content(@contestant_1.name)
+    expect(page).to have_content(@contestant_2.name)
+    expect(page).to have_content(@contestant_3.name)
+  end
+
+  it "should list all respective projects each contestant has been on underneath" do
+    visit "/contestants"
+
+    within "#contestant-#{@contestant_1.id}" do
+      expect(page).to have_content(@project_1.name)
+      expect(page).to have_content(@project_2.name)
+      expect(page).to_not have_content(@project_3.name)
+    end
+
+    within "#contestant-#{@contestant_2.id}" do
+      expect(page).to have_content(@project_1.name)
+      expect(page).to have_content(@project_3.name)
+      expect(page).to_not have_content(@project_2.name)
+    end
+
+    within "#contestant-#{@contestant_3.id}" do
+      expect(page).to have_content(@project_1.name)
+      expect(page).to have_content(@project_2.name)
+      expect(page).to have_content(@project_3.name)
     end
   end
 end

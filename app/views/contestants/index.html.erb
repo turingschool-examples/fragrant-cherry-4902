@@ -1,0 +1,9 @@
+<h3><u>Make it Work! Contestant List:</u></h3>
+
+  <% @contestants.each do |contestant| %>
+    <div id="contestant-<%= contestant.id %>">
+      <u><%= contestant.name %></u><br>
+      Projects: <%= contestant.contestant_project_names.join(", ") %>
+    </div>
+    <br>
+  <% end %>

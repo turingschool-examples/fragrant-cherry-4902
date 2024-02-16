@@ -1,13 +1,22 @@
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
+RSpec.describe "Project Show Page", type: :feature do
+  before :each do
+    @challenge_1 = Challenge.create!(theme: "Recycled Material", project_budget: 1000)
 
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
+    @project_1 = @challenge_1.projects.create!(name: "News Chic", material: "Newspaper")
   end
 
+  #User Story - 1
+  it "displays project's name, material, and theme of the challenge when visiting project show page" do
+    visit "/projects/#{@project_1.id}"
+
+    expect(page).to have_content("Project Name: #{@project_1.name}")
+    expect(page).to have_content("Material: #{@project_1.material}")
+    expect(page).to have_content("Challenge Theme: #{@challenge_1.theme}")
+  end
+
+  #User Story - 3
   before :each do
 
     @challenge_1 = Challenge.create!(theme: "Recycled Material", project_budget: 1000)
@@ -30,11 +39,14 @@ RSpec.describe Project, type: :model do
 
   end
 
-  describe "instance methods" do
-    it "counts the number of contestants working on each respective project" do
-      expect(@project_1.project_contestant_count).to eq(3)
-      expect(@project_2.project_contestant_count).to eq(2)
-      expect(@project_3.project_contestant_count).to eq(2)
-    end
+  it "displays the number of contestants working on each respective project" do
+    visit "/projects/#{@project_1.id}"
+    expect(page).to have_content("Number of Contestants: 3")
+
+    visit "/projects/#{@project_2.id}"
+    expect(page).to have_content("Number of Contestants: 2")
+
+    visit "/projects/#{@project_3.id}"
+    expect(page).to have_content("Number of Contestants: 2")
   end
 end
