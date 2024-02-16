@@ -26,7 +26,7 @@ RSpec.describe "Contestant's Index Page", type: :feature do
   it "should display a list of names of all the contestants trying to Make it Work!" do
     visit "/contestants"
 
-    expect(page).to have_content("Make it Work! Contestants List:")
+    expect(page).to have_content("Make it Work! Contestant List:")
     expect(page).to have_content(@contestant_1.name)
     expect(page).to have_content(@contestant_2.name)
     expect(page).to have_content(@contestant_3.name)
@@ -37,14 +37,14 @@ RSpec.describe "Contestant's Index Page", type: :feature do
 
     within "#contestant-#{@contestant_1.id}" do
       expect(page).to have_content(@project_1.name)
-      expect(page).to have_content(@project_3.name)
-      expect(page).to_not have_content(@project_2.name)
+      expect(page).to have_content(@project_2.name)
+      expect(page).to_not have_content(@project_3.name)
     end
 
     within "#contestant-#{@contestant_2.id}" do
       expect(page).to have_content(@project_1.name)
-      expect(page).to have_content(@project_2.name)
-      expect(page).to_not have_content(@project_3.name)
+      expect(page).to have_content(@project_3.name)
+      expect(page).to_not have_content(@project_2.name)
     end
 
     within "#contestant-#{@contestant_3.id}" do
